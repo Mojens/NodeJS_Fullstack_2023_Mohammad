@@ -6,7 +6,7 @@
 const letters = ["a", "b", "c"];
 // show b in the console 
 
-console.log(letters[1])
+console.log(letters[1]);
 
 // --------------------------------------
 // Exercise 2 - Array Positioning
@@ -18,17 +18,17 @@ const friends = [];
 const friend1 = {
     name: "kasper",
     age: 11
-}
+};
 const friend2 = {
     name: "Jens",
     age: 13
-}
+};
 const friend3 = {
     name: "Mohammad",
     age: 12
-}
-friends.push(friend1, friend2, friend3)
-console.log(friends)
+};
+friends.push(friend1, friend2, friend3);
+console.log(friends);
 // --------------------------------------
 // Exercise 3 - Get the index of first occurance of that value. 
 
@@ -37,7 +37,7 @@ const significantMathNumbers = [0, 2.718, 3.14159, 1729];
 // You want to programmatically find where the number 1729 is in the array.
 // programmatically means that no finger counting allowed. There is a method for this (finding index based of value). 
 
-console.log(significantMathNumbers.indexOf(1729))
+console.log(significantMathNumbers.indexOf(1729));
 
 // --------------------------------------
 // Exercise 4 - Inserting elements
@@ -48,7 +48,7 @@ const diet = ["tomato", "cucumber", "rocket"];
 
 diet.splice(2, 0, "hamburger", "soda", "pizza");
 
-console.log(diet)
+console.log(diet);
 // --------------------------------------
 // Exercise 5 - Remove element
 
@@ -56,8 +56,8 @@ console.log(diet)
 // Don't remove by index. You know in advance that it's the last in the array because you are too full already. 
 
 
-diet.pop()
-console.log(diet)
+diet.pop();
+console.log(diet);
 
 
 // --------------------------------------
@@ -65,8 +65,8 @@ console.log(diet)
 
 // You really like your daily diet from last exercise. Copy it to a new array called dinnerTray so you can give it to a friend.  
 
-const dinnerTray = diet.slice()
-console.log(dinnerTray)
+const dinnerTray = diet.slice();
+console.log(dinnerTray);
 
 
 // --------------------------------------
@@ -79,7 +79,7 @@ let i = 1;
 
 for (i; i < lettersExpanded.length; i += 2) {
     console.log(lettersExpanded[i]);
-}
+};
 
 // --------------------------------------
 // Exercise 8 - For loop and if statement
@@ -96,9 +96,9 @@ for (x; x < numbers.length; x += 1) {
     if (numbers[x] > 6 || numbers[x] < 0) {
     } else {
         discardedNumbers.push(numbers[x])
-    }
-}
-console.log("Discarded numbers: " + discardedNumbers)
+    };
+};
+console.log("Discarded numbers: " + discardedNumbers);
 
 // --------------------------------------
 
