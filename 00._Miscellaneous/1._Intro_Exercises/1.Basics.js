@@ -5,6 +5,7 @@
 
 const firstName = "Anders";
 const lastName = "Latif";
+
 // EXERCISE
 // show in the console
 // My first name is Anders and my last name is Latif
