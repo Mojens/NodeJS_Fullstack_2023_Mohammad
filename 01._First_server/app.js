@@ -1,6 +1,8 @@
 const express = require("express")
 const app = express();
 
+app.use(express.json()); // this is a middleware
+
 // Route (entire thing)
 // HTTP method
 //     Endpoint     Callback function 
@@ -45,6 +47,11 @@ app.get("/bat", (req, res) => {
 app.get("/bottle/:bottleSize", (req, res) => {
     console.log(req.params);
     res.send({ message: `The bottle is ${req.params.bottleSize}`});
+});
+
+app.post("/package", (req, res) => {
+    console.log(req.body);
+    res.send({ message: req.body});
 });
 
 
