@@ -1,0 +1,9 @@
+anatomy of an URL
+
+protocol
+        Domain          Endpoint      path variable
+https://localhost:8080/kickthedinosaur/:id?size=1200&color=black
+                 top level domain              query string
+
+
+
