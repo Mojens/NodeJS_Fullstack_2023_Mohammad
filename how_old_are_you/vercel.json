@@ -10,20 +10,6 @@
     {
       "src": "/(.*)",
       "dest": "app.js"
-    },
-    {
-      "src": "/frontpage/frontpage.css",
-      "headers": {
-        "Content-Type": "text/css"
-      },
-      "dest": "/frontpage/frontpage.css"
-    },
-    {
-      "src": "/frontpage/frontpage.js",
-      "headers": {
-        "Content-Type": "application/javascript"
-      },
-      "dest": "/frontpage/frontpage.js"
     }
   ]
 }
