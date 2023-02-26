@@ -1,15 +1,24 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "app.js",
-        "use": "@now/node"
-      }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "app.js"
-      }
-    ]
-  }
+  "routes": [
+    {
+      "src": "/frontpage/(.*)",
+      "headers": {
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": "text/css"
+      },
+      "dest": "/frontpage/$1"
+    },
+    {
+      "src": "/frontpage/(.*)",
+      "headers": {
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": "application/javascript"
+      },
+      "dest": "/frontpage/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "app.js"
+    }
+  ]
+}
