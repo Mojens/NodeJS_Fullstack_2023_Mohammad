@@ -24,6 +24,15 @@
             background-color: #e48cd7;
             color: #ffffff;
         }
+
+        .scrollable-list {
+            height: 500px;
+         
+            overflow-y: scroll;
+          
+            padding-left: 20px;
+       
+        }
     </style>
 </head>
 
@@ -54,36 +63,39 @@
             </div>
             <div class="col-sm"></div>
         </div>
-        <div class="col-sm text-center">
+        <div class="col-sm text-center" style="margin-top: 50px;">
             <h1 id="date-result" style="text-decoration: underline;"></h1>
         </div>
-        <div class="row">
 
-            <div class="col">
-                <h2>Events that occured on this date</h2>
-                <ul id="events-on-date"></ul>
+        <div class="row" style="display: none;" id="extra-data-wrapper">
+            <div class="col" style="background-color: aliceblue;color: black;">
+                <h2>Events that occurred on this date</h2>
+                <ul class="scrollable-list" id="events-on-date"></ul>
             </div>
-            <div class="col">
-                <h2>Deaths that occured on this date</h2>
-                <ul id="deaths-on-date"></ul>
+            <div class="col" style="background-color: beige;color: black;">
+                <h2>Deaths that occurred on this date</h2>
+                <ul class="scrollable-list" id="deaths-on-date"></ul>
             </div>
-            <div class="col">
-                <h2>Births that occured on this date</h2>
-                <ul id="births-on-date"></ul>
+            <div class="col" style="background-color: darkblue;color: #ffffff;">
+                <h2>Births that occurred on this date</h2>
+                <ul class="scrollable-list" id="births-on-date"></ul>
             </div>
         </div>
+
+
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.4.0/purify.min.js"></script>
     <script>
         function calculateAge() {
+            document.getElementById("extra-data-wrapper").style.display = "block";
             const monthNames = ["January", "February", "March", "April", "May", "June",
                 "July", "August", "September", "October", "November", "December"
             ];
             const date = document.getElementById("picked-date").value;
             const month = date.split("-")[1];
             const day = date.split("-")[2];
-            document.getElementById("date-result").innerText = DOMPurify.sanitize(`What happend on this day in the history of earth: ${monthNames[month-1]} ${day}`);
+            document.getElementById("date-result").innerText = DOMPurify.sanitize(`What happend on this day in the history of earth: ${monthNames[month - 1]} ${day}`);
             fetch(`/api/age?birthDate=${date}`, {
                 method: "GET",
                 headers: {
@@ -100,7 +112,7 @@
                 .then(response => response.json())
                 .then(result => {
                     const events = result.events;
-               
+
                     const eventsList = document.getElementById("events-on-date");
                     events.forEach(event => {
                         const li = document.createElement("li");
@@ -109,7 +121,7 @@
                     });
                 });
 
-                fetch(`https://byabbe.se/on-this-day/${Number(month)}/${Number(day)}/deaths.json`)
+            fetch(`https://byabbe.se/on-this-day/${Number(month)}/${Number(day)}/deaths.json`)
                 .then(response => response.json())
                 .then(result => {
                     const deaths = result.deaths;
@@ -126,7 +138,7 @@
 
 
 
-                fetch(`https://byabbe.se/on-this-day/${Number(month)}/${Number(day)}/births.json`)
+            fetch(`https://byabbe.se/on-this-day/${Number(month)}/${Number(day)}/births.json`)
                 .then(response => response.json())
                 .then(result => {
                     const births = result.births;
