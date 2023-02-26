@@ -47,17 +47,43 @@
                         age?</button>
                 </div>
                 <div id="age-result" class="mt-3">
-                    <h3 id="age""></h3>
+                    <h3 id="age-before-text" style="display: inline-block;"></h3>
+                    <h3 id="age"></h3>
                     <h3 id="age-after-text" style="display: inline-block;"></h3>
                 </div>
             </div>
             <div class="col-sm"></div>
         </div>
+        <div class="col-sm text-center">
+            <h1 id="date-result" style="text-decoration: underline;"></h1>
+        </div>
+        <div class="row">
+
+            <div class="col">
+                <h2>Events that occured on this date</h2>
+                <ul id="events-on-date"></ul>
+            </div>
+            <div class="col">
+                <h2>Deaths that occured on this date</h2>
+                <ul id="deaths-on-date"></ul>
+            </div>
+            <div class="col">
+                <h2>Births that occured on this date</h2>
+                <ul id="births-on-date"></ul>
+            </div>
+        </div>
     </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.4.0/purify.min.js"></script>
     <script>
         function calculateAge() {
+            const monthNames = ["January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"
+            ];
             const date = document.getElementById("picked-date").value;
+            const month = date.split("-")[1];
+            const day = date.split("-")[2];
+            document.getElementById("date-result").innerText = DOMPurify.sanitize(`What happend on this day in the history of earth: ${monthNames[month-1]} ${day}`);
             fetch(`/api/age?birthDate=${date}`, {
                 method: "GET",
                 headers: {
@@ -66,8 +92,61 @@
             }).then(response => response.json())
                 .then(result => {
                     document.getElementById("age").innerText = DOMPurify.sanitize(result.data);
+                    document.getElementById("age-before-text").innerText = DOMPurify.sanitize("you are");
                     document.getElementById("age-after-text").innerText = DOMPurify.sanitize(" years old");
                 });
+
+            fetch(`https://byabbe.se/on-this-day/${Number(month)}/${Number(day)}/events.json`)
+                .then(response => response.json())
+                .then(result => {
+                    const events = result.events;
+               
+                    const eventsList = document.getElementById("events-on-date");
+                    events.forEach(event => {
+                        const li = document.createElement("li");
+                        li.innerText = DOMPurify.sanitize(`Year: ${event.year}\n${event.description}`);
+                        eventsList.appendChild(li);
+                    });
+                });
+
+                fetch(`https://byabbe.se/on-this-day/${Number(month)}/${Number(day)}/deaths.json`)
+                .then(response => response.json())
+                .then(result => {
+                    const deaths = result.deaths;
+                    const deathsList = document.getElementById("deaths-on-date");
+                    deaths.forEach(event => {
+                        const li = document.createElement("li");
+                        li.innerText = DOMPurify.sanitize(`Year: ${event.year}\n${event.description}`);
+                        deathsList.appendChild(li);
+                    });
+                });
+
+
+
+
+
+
+                fetch(`https://byabbe.se/on-this-day/${Number(month)}/${Number(day)}/births.json`)
+                .then(response => response.json())
+                .then(result => {
+                    const births = result.births;
+                    const birthsList = document.getElementById("births-on-date");
+                    births.forEach(event => {
+                        const li = document.createElement("li");
+                        li.innerText = DOMPurify.sanitize(`Year: ${event.year}\n${event.description}`);
+                        birthsList.appendChild(li);
+                    });
+                });
+
+
+
+
+
+
+
+
+
+
         };
     </script>
 </body>
