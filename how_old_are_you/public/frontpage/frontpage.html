@@ -49,7 +49,7 @@
                 <h2>Enter your birth date</h2>
                 <div class="date-picker-wrapper">
                     <input type="date" id="picked-date">
-                    <button onclick="calculateAge()" class="btn btn-primary mt-3" style="margin-bottom: 20px;">What is
+                    <button type="submit" onclick="calculateAge()" class="btn btn-primary mt-3" style="margin-bottom: 20px;">What is
                         my
                         age?</button>
                 </div>
@@ -85,8 +85,11 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.4.0/purify.min.js"></script>
     <script>
+        document.getElementById("picked-date").setAttribute("max", new Date().toISOString().split("T")[0]);
+
         function calculateAge() {
             document.getElementById("extra-data-wrapper").style.display = "block";
+            console.log(document.getElementById("picked-date").value);
             const monthNames = ["January", "February", "March", "April", "May", "June",
                 "July", "August", "September", "October", "November", "December"
             ];
@@ -101,7 +104,8 @@
                 },
             }).then(response => response.json())
                 .then(result => {
-                    document.getElementById("age").innerText = DOMPurify.sanitize(result.data);
+                    console.log(result.data);
+                    document.getElementById("age").innerText = DOMPurify.sanitize(`${result.data}`);
                     document.getElementById("age-before-text").innerText = DOMPurify.sanitize("you are");
                     document.getElementById("age-after-text").innerText = DOMPurify.sanitize(" years old");
                 });

@@ -12,13 +12,13 @@ app.get('/', (req, res) => {
 
 app.get('/api/age', (req, res) => {
     const birthDate = req.query.birthDate;
-    console.log("input date ",birthDate);
+    console.log(birthDate);
     const birthYear = birthDate.split('-')[0];
     const birthMonth = birthDate.split('-')[1];
     const birthDay = birthDate.split('-')[2];
-    console.log("input year ",birthYear);
-    console.log("input month ",birthMonth);
-    console.log("input day ",birthDay);
+    console.log(birthYear);
+    console.log(birthMonth);
+    console.log(birthDay);
     const today = new Date();
     const todayYear = today.getFullYear();
     const todayMonth = today.getMonth() + 1;
@@ -27,7 +27,8 @@ app.get('/api/age', (req, res) => {
     console.log(todayMonth);
     console.log(todayDay);
     let age = todayYear - birthYear;
-    if (todayMonth < birthMonth || (todayMonth == birthMonth && todayDay < birthDay)) {
+    console.log(age)
+    if (todayMonth < birthMonth || (todayMonth == birthMonth && todayDay < birthDay) && age > 0) {
         age--;
     }
     res.send({ data: age });
