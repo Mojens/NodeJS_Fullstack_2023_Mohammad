@@ -49,7 +49,8 @@
                 <h2>Enter your birth date</h2>
                 <div class="date-picker-wrapper">
                     <input type="date" id="picked-date">
-                    <button type="submit" onclick="calculateAge()" class="btn btn-primary mt-3" style="margin-bottom: 20px;">What is
+                    <button type="submit" onclick="calculateAge()" class="btn btn-primary mt-3"
+                        style="margin-bottom: 20px;">What is
                         my
                         age?</button>
                 </div>
@@ -85,7 +86,14 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.4.0/purify.min.js"></script>
     <script>
-        document.getElementById("picked-date").setAttribute("max", new Date().toISOString().split("T")[0]);
+        document.getElementById("picked-date").addEventListener("input", function () {
+            let selectedDate = new Date(this.value);
+            let currentDate = new Date();
+            if (selectedDate.getFullYear() > currentDate.getFullYear()) {
+                this.value = currentDate.toISOString().split("T")[0];
+            }
+        });
+
 
         function calculateAge() {
             document.getElementById("extra-data-wrapper").style.display = "block";
@@ -128,7 +136,7 @@
                 .then(result => {
                     const deaths = result.deaths;
                     const deathsList = document.getElementById("deaths-on-date");
-                    deathsList.innerHTML = DOMPurify.sanitize(""); 
+                    deathsList.innerHTML = DOMPurify.sanitize("");
                     deaths.forEach(event => {
                         const li = document.createElement("li");
                         li.innerText = DOMPurify.sanitize(`Year: ${event.year}\n${event.description}`);
@@ -141,7 +149,7 @@
                 .then(result => {
                     const births = result.births;
                     const birthsList = document.getElementById("births-on-date");
-                    birthsList.innerHTML = DOMPurify.sanitize(""); 
+                    birthsList.innerHTML = DOMPurify.sanitize("");
                     births.forEach(event => {
                         const li = document.createElement("li");
                         li.innerText = DOMPurify.sanitize(`Year: ${event.year}\n${event.description}`);
