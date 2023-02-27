@@ -27,11 +27,9 @@
 
         .scrollable-list {
             height: 500px;
-         
             overflow-y: scroll;
-          
             padding-left: 20px;
-       
+
         }
     </style>
 </head>
@@ -112,8 +110,8 @@
                 .then(response => response.json())
                 .then(result => {
                     const events = result.events;
-
                     const eventsList = document.getElementById("events-on-date");
+                    eventsList.innerHTML = DOMPurify.sanitize("");
                     events.forEach(event => {
                         const li = document.createElement("li");
                         li.innerText = DOMPurify.sanitize(`Year: ${event.year}\n${event.description}`);
@@ -126,6 +124,7 @@
                 .then(result => {
                     const deaths = result.deaths;
                     const deathsList = document.getElementById("deaths-on-date");
+                    deathsList.innerHTML = DOMPurify.sanitize(""); 
                     deaths.forEach(event => {
                         const li = document.createElement("li");
                         li.innerText = DOMPurify.sanitize(`Year: ${event.year}\n${event.description}`);
@@ -138,12 +137,14 @@
                 .then(result => {
                     const births = result.births;
                     const birthsList = document.getElementById("births-on-date");
+                    birthsList.innerHTML = DOMPurify.sanitize(""); 
                     births.forEach(event => {
                         const li = document.createElement("li");
                         li.innerText = DOMPurify.sanitize(`Year: ${event.year}\n${event.description}`);
                         birthsList.appendChild(li);
                     });
                 });
+
 
 
 
