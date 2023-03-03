@@ -1,0 +1,35 @@
+{
+  "name": "upper",
+  "version": "0.0.1",
+  "description": "Motivation app with jokes, quotes and daily commands",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mojens/NodeJS_Fullstack_2023_Mohammad.git"
+  },
+  "keywords": [
+    "motivation",
+    "jokes",
+    "daily",
+    "commands",
+    "upper",
+    "up",
+    "happy",
+    "good",
+    "good",
+    "time"
+  ],
+  "author": "Mojens",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Mojens/NodeJS_Fullstack_2023_Mohammad/issues"
+  },
+  "homepage": "https://github.com/Mojens/NodeJS_Fullstack_2023_Mohammad#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
