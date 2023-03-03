@@ -1,0 +1,32 @@
+{
+    "tanks": [
+        {
+            "name": "Tiger I",
+            "country": "Germany"
+        },
+        {
+            "name": "Leopard",
+            "country": "Germany"
+        },
+        {
+            "name": "T-34",
+            "country": "USSR"
+        },
+        {
+            "name": "KV-1",
+            "country": "USSR"
+        },
+        {
+            "name": "M4 Sherman",
+            "country": "USA"
+        },
+        {
+            "name": "M26 Pershing",
+            "country": "USA"
+        },
+        {
+            "name": "Panther",
+            "country": "Germany"
+        }
+    ]
+}

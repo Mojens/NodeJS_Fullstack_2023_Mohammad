@@ -3,15 +3,8 @@ const app = express()
 
 app.use(express.static('public'))
 
-const tanks = [
-  { name: 'Tiger I', country: 'Germany' },
-  { name: 'Leopard', country: 'Germany' },
-  { name: 'T-34', country: 'USSR' },
-  { name: 'KV-1', country: 'USSR' },
-  { name: 'M4 Sherman', country: 'USA' },
-  { name: 'M26 Pershing', country: 'USA' },
-  { name: 'Panther', country: 'Germany' }
-]
+const {getTanks,addTank} = require("./util/tanks.js")
+console.log(getTanks())
 
 let visitorCount = 1;
 
@@ -27,13 +20,18 @@ app.get('/visitors', (req, res) => {
   res.sendFile(__dirname + '/public/visitors/visitors.html')
 });
 
+app.get('/museumGuards', (req, res) => {
+  res.sendFile(__dirname + '/public/museumGuards/museumGuards.html')
+});
+
+
 
 /* API */
 
 /* Tanks */
 
 app.get('/api/tanks', (req, res) => {
-  res.send({ data: tanks })
+  res.send({ data: getTanks() })
 });
 
 /* Visitor */
