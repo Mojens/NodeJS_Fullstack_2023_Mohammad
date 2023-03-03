@@ -1,11 +1,18 @@
 import express from "express";
-//const express = impoty ("express");
+import path from "path";
 const app = express();
 const PORT = 8080;
 
-//import jokes from "./util/jokes.js";
+app.use(express.static("public"));
 
 
+app.get("/", (req, res) => {
+    res.sendFile(path.resolve("public/pages/frontpage/frontpage.html"))
+});
+
+app.get("/IRLQuests", (req, res) => {
+    res.sendFile(path.resolve("public/pages/IRLQuests/IRLQuests.html"))
+});
 
 
 
