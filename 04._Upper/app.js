@@ -5,6 +5,8 @@ const PORT = 8080;
 
 app.use(express.static("public")); // need this for making css and js work inside of the html files
 
+import jokes from "./util/jokes.js"
+console.log(await jokes.getJoke());
 
 app.get("/", (req, res) => {    
     res.sendFile(path.resolve("public/pages/frontpage/frontpage.html"))
