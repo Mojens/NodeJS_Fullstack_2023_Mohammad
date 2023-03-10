@@ -1,0 +1,11 @@
+#nav-logo {
+    max-width: 4em;
+}
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+main {
+    flex: 1;
+}

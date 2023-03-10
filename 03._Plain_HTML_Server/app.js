@@ -3,7 +3,7 @@ const app = express()
 
 app.use(express.static('public'))
 
-const {getTanks,addTank} = require("./util/tanks.js")
+const { getTanks, addTank } = require("./util/tanks.js")
 console.log(getTanks())
 
 let visitorCount = 1;
@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/tanks', (req, res) => {
-  res.sendFile(__dirname + '/public/tanks/tanks.html' )
+  res.sendFile(__dirname + '/public/tanks/tanks.html')
 })
 
 app.get('/visitors', (req, res) => {
@@ -42,8 +42,15 @@ app.get('/api/visitors', (req, res) => {
 
 app.put('/api/visitors', (req, res) => {
   res.send({ data: ++visitorCount })
-})
+});
 
+app.get("/api/guards", (req, res) => {
+  if (req.query.passport === "theskyisblue") {
+    return res.redirect("/api/tanks")
+  }
+  res.send({ error: "You are not allowed to enter the museum" })
+
+});
 
 
 
