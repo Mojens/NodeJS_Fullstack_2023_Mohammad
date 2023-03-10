@@ -3,10 +3,10 @@ import path from "path";
 const app = express();
 const PORT = 8080;
 
-app.use(express.static("public"));
+app.use(express.static("public")); // need this for making css and js work inside of the html files
 
 
-app.get("/", (req, res) => {
+app.get("/", (req, res) => {    
     res.sendFile(path.resolve("public/pages/frontpage/frontpage.html"))
 });
 

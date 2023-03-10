@@ -1,1 +1,3 @@
-console.log('thank you for visiting')
+setTimeout(() => {
+    window.location.href = '/visitors'
+}, 3000)
