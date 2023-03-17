@@ -7,21 +7,24 @@ app.use(express.static("public")); // need this for making css and js work insid
 
 // import jokes from "./util/jokes.js";
 
-import fs from "fs";
-// Components
-const navbar = fs.readFileSync("./public/components/navbar/navbar.html").toString();
-const footer = fs.readFileSync("./public/components/footer/footer.html").toString();
+import templateEngine from "./util/templateEngine.js";
 
+const frontpage = templateEngine.readPage("./public/pages/frontpage/frontpage.html");
+const frontpagePage = templateEngine.renderPage(frontpage, { 
+    tabTitle: "Upper | Home" 
+});
 
-// Pages
-const frontpage = fs.readFileSync("./public/pages/frontpage/frontpage.html").toString();
-const IRLQuests = fs.readFileSync("./public/pages/IRLQuests/IRLQuests.html").toString();
-const jokes = fs.readFileSync("./public/pages/jokes/jokes.html").toString();
+const IRLQuests = templateEngine.readPage("./public/pages/IRLQuests/IRLQuests.html");
+const IRLQuestsPage = templateEngine.renderPage(IRLQuests, { 
+    tabTitle: "Upper | IRLQuests" 
+});
 
-// Constructed pages    
-const frontpagePage = navbar + frontpage + footer;
-const IRLQuestsPage = navbar + IRLQuests + footer;
-const jokesPage = navbar + jokes + footer;
+const jokes = templateEngine.readPage("./public/pages/jokes/jokes.html");
+const jokesPage = templateEngine.renderPage(jokes, { 
+    tabTitle: "Upper | Jokes",
+    cssLink: `<link href="/pages/jokes/jokes.css" rel="stylesheet">`
+});
+
 
 app.get("/", (req, res) => {    
     // readFileSync is a blocking function, so it will wait for the file to be read before continuing
