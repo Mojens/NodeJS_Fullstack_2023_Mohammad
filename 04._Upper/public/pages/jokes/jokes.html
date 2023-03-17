@@ -1,6 +1,15 @@
+<h1>Here is a joke</h1>
 
-        <h1>Here is a joke</h1>
-        
+<div>$JOKE_HTML_CONTENT</div>
+
+<!--
         <script>
-                $JOKE
+                const joke = $JOKE
+                if(joke.delivery){
+                        document.getElementById("joke").innerText += joke.setup + ": " + joke.delivery
+                } else{
+                        document.getElementById("joke").innerText += joke.joke
+                }
+                console.log(joke)
         </script>
+-->
