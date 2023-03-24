@@ -1,7 +1,6 @@
 import express from "express";
 import path from "path";
 const app = express();
-const PORT = 8080;
 
 app.use(express.static("public")); // need this for making css and js work inside of the html files
 
@@ -39,10 +38,9 @@ app.get("/jokes", async (req, res) => {
 
 
 
+console.log(process.env.PORT)
 
-
-
-
+const PORT = process.env.PORT || 8080;
 
 app.listen(PORT, (error) => {
     if (error) {
