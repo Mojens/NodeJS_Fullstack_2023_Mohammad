@@ -33,7 +33,7 @@ app.get("/IRLQuests", (req, res) => {
 
 app.get("/jokes", async (req, res) => {
     const jokesPage = await templateEngine.renderJokePage();
-    res.send(jokesPage);
+    res.send(jokesPage);  
 });
 
 
