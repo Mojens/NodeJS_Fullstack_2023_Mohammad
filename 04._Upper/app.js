@@ -1,10 +1,9 @@
 import express from "express";
-import path from "path";
 const app = express();
 
 app.use(express.static("public")); // need this for making css and js work inside of the html files
+app.use(express.urlencoded({ extended: true })); // need this for making req.body work with form from html
 
-import getJoke from "./util/jokes.js";
 
 import templateEngine from "./util/templateEngine.js";
 
@@ -18,6 +17,10 @@ const IRLQuestsPage = templateEngine.renderPage(IRLQuests, {
     tabTitle: "Upper | IRLQuests"
 });
 
+const contact = templateEngine.readPage("./public/pages/contact/contact.html")
+const contactPage = templateEngine.renderPage(contact, {
+    tabTitle: "Upper | Contact"
+})
 
 
 app.get("/", (req, res) => {
@@ -32,10 +35,18 @@ app.get("/IRLQuests", (req, res) => {
 
 app.get("/jokes", async (req, res) => {
     const jokesPage = await templateEngine.renderJokePage();
-    res.send(jokesPage);  
+    res.send(jokesPage);
 });
 
+app.get("/contact", (req, res) => {
+    res.send(contactPage)
+})
 
+/* API */
+
+app.post("/api/contact", (req, res) => {
+    res.redirect("/")
+});
 
 
 console.log(process.env.PORT)
