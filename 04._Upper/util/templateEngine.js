@@ -18,32 +18,30 @@ function readPage(pagePath) {
     return fs.readFileSync(pagePath).toString()
 };
 
-async function renderJokePage(){
+async function renderJokePage() {
     const path = "./public/pages/jokes/jokes.html";
-    const jokePage = readPage(path);
+    let jokePage = readPage(path);
     const joke = await getJoke();
-    if (joke.joke){
-        jokePage = jokePage.replace("$JOKE_HTML_CONTENT", `<h3><p>${escape(joke.joke)}</p></h3>`);
 
-    } else if (joke.setup && joke.delivery){
-
+    if (joke.joke) {
+        jokePage = jokePage.replace("$JOKE_HTML_CONTENT", `<h3>${joke.joke}</h3>`);
+    } else if (joke.setup && joke.delivery) {
         const jokeHtmlContent = `
-        <h3><p>${escape(joke.setup)}</p></h3>
-        <h4><p>...</p></h4>
-        <h3><p> ${escape(joke.delivery)}</p></h3>
+            <h3>${escape(joke.setup)}</h3>
+            <h4>...</h4>
+            <h3>${escape(joke.delivery)}</h3>
         `;
         jokePage = jokePage.replace("$JOKE_HTML_CONTENT", jokeHtmlContent);
-
     } else {
         jokePage = jokePage.replace("$JOKE_HTML_CONTENT", "<h3>No jokes for you.</h3>");
     }
+
     const constructedPage = renderPage(jokePage, {
         tabTitle: "Upper | Jokes",
-        cssLink: `<link href="/pages/jokes/jokes.css" rel="stylesheet">`
-    })
-
-    return constructedPage;
-};
+        cssLink: `<link rel="stylesheet" href="/pages/jokes/jokes.css">`
+    });
+    return constructedPage;    
+}
 
 
 export default {
