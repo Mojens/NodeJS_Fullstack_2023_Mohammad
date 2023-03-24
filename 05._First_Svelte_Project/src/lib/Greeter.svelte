@@ -1,6 +1,6 @@
 <script>
     export let name = "Martin";
-    let greeting = "Hello";
+    export let greeting = "Hello";
 
     function changeGreeting() {
         if (greeting === "Hello") {
@@ -19,5 +19,6 @@
 <style>
     h1 {
         color: red;
+        user-select: none;
     }
 </style>
