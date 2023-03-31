@@ -8,17 +8,23 @@
       id: 1,
       name: "Ann",
       isGirl: true,
+      amountOfMoney: 0,
+      cookies: [],
     },
     {
       id: 2,
       name: "Amelie",
       isGirl: true,
       blackSheep: "medium-black-sheep",
+      amountOfMoney: 0,
+      cookies: [],
     },
     {
       id: 3,
       name: "Peter",
       blackSheep: "ultra-black-sheep",
+      amountOfMoney: 0,
+      cookies: [],
     },
   ];
 </script>

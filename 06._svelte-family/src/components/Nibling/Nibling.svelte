@@ -4,6 +4,8 @@
     export let onShowLove;
     // Function reference to the parent component's function
     export let piblingName;
+    export let askForAllowance;
+    export let onEatCookie;
     
 </script>
 
@@ -17,9 +19,22 @@ class={nibling.blackSheep || "not-a-black-sheep"}>
         <p>Nephew: {nibling.name}</p>
     {/if}
 </div>
+<p>{nibling.cookies}</p>
+
+
+
 <button on:click={() => onShowLove(`Hey ${piblingName}. It's me ${nibling.name}, and I love you.`)}>
     Show love
 </button>
+<button on:click={() => askForAllowance(`Hey ${piblingName}. It's me ${nibling.name}, can i get some money?.`)}>
+    Ask for allowance
+</button>
+
+
+
+<button on:click={() => onEatCookie()}>Eat a cookie</button>
+
+
 
 <style>
     .is-girl{
