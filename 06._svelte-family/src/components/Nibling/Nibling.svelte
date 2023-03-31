@@ -2,4 +2,8 @@
     export let nibling;
 </script>
 
-<p>My name is { nibling.name }.</p>
+{#if nibling.isGirl}
+    <p>Niece: {nibling.name}</p>
+{:else}
+    <p>Nephew: {nibling.name}</p>
+{/if}
