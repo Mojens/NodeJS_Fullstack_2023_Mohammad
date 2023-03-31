@@ -41,6 +41,6 @@
         {nibling}
         onShowLove={handleShowLove} piblingName={name}
         askForAllowance = {askForAllowance} 
-        onEatCookie = {onEatCookie} nibling={nibling}
+        onEatCookie = {onEatCookie}
     />
 {/each}
