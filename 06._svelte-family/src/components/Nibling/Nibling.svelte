@@ -1,5 +1,9 @@
 <script>
+
     export let nibling;
+    export let onShowLove;
+    // Function reference to the parent component's function
+    export let piblingName;
     
 </script>
 
@@ -13,6 +17,9 @@ class={nibling.blackSheep || "not-a-black-sheep"}>
         <p>Nephew: {nibling.name}</p>
     {/if}
 </div>
+<button on:click={() => onShowLove(`Hey ${piblingName}. It's me ${nibling.name}, and I love you.`)}>
+    Show love
+</button>
 
 <style>
     .is-girl{
