@@ -1,0 +1,3 @@
+[submodule "mandatory.01"]
+	path = mandatory.01
+	url = https://github.com/Mojens/Mandatory-Assignment-1-FullStack-NodeJS.git
