@@ -1,8 +1,6 @@
 import db from './connection.js'
 
-console.log(process.argv)
-
-const isDeleteMode = process.argv.findIndex((arg) => arg === 'delete-mode') === -1 ? false : true;
+const isDeleteMode = true;
 
 if (isDeleteMode) {
     db.exec(`DROP TABLE planets;`);
@@ -24,7 +22,9 @@ CREATE TABLE IF NOT EXISTS planets (
 db.exec(`
 CREATE TABLE IF NOT EXISTS people (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT
+    name TEXT,
+    planet_id INTEGER,
+    FOREIGN KEY (planet_id) REFERENCES planets (id)
 );
 `);
 
