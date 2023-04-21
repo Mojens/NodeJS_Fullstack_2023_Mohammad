@@ -7,6 +7,7 @@
     "sqlite3": "^5.1.6"
   },
   "scripts": {
+    "reset-database": "node ./databases/createDatabase.js delete_mode",
     "create-database": "node ./databases/createDatabase.js"
   }
 }
