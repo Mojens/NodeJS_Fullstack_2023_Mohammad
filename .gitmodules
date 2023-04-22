@@ -1,3 +1,6 @@
 [submodule "mandatory.01"]
 	path = mandatory.01
 	url = https://github.com/Mojens/Mandatory-Assignment-1-FullStack-NodeJS.git
+[submodule "mandatory_.02"]
+	path = mandatory_.02
+	url = https://github.com/Mojens/Mandatory-Assignment-2-FullStack-NodeJS.git
